@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: CORS_ORIGIN, // ✅ Replace '*' with your frontend URL
+    origin: "*", // ✅ Replace '*' with your frontend URL
     credentials: true, // ✅ Allow credentials (cookies, authorization headers)
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
