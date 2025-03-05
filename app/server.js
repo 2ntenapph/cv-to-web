@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "*", // ✅ Replace '*' with your frontend URL
+    origin: "https://front-production-6a0f.up.railway.app", // ✅ Replace '*' with your frontend URL
     credentials: true, // ✅ Allow credentials (cookies, authorization headers)
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
