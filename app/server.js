@@ -8,6 +8,8 @@ const fileUpload = require("express-fileupload");
 const authRoutes = require("../routes/authRoutes");
 const profileRoutes = require("../routes/profileRoutes");
 
+const MONGO_URL = process.env.MONGO_URL || "your-secret-key"; 
+
 const app = express();
 
 // Middleware
@@ -31,7 +33,7 @@ app.use("/uploads", express.static("uploads"));
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://mongo:MFrICspRmyLYIgkMXPPRbhZKMQRsmHxm@mongodb.railway.internal:27017", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
