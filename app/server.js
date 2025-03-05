@@ -8,14 +8,15 @@ const fileUpload = require("express-fileupload");
 const authRoutes = require("../routes/authRoutes");
 const profileRoutes = require("../routes/profileRoutes");
 
-const MONGO_URL = process.env.MONGO_URL || "your-secret-key"; 
+const MONGO_URL = process.env.MONGO_URL || "MONGO_URL"; 
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "CORS_ORIGIN"; 
 
 const app = express();
 
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", // ✅ Replace '*' with your frontend URL
+    origin: CORS_ORIGIN, // ✅ Replace '*' with your frontend URL
     credentials: true, // ✅ Allow credentials (cookies, authorization headers)
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
