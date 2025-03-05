@@ -13,15 +13,23 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN || "CORS_ORIGIN";
 
 const app = express();
 
-// Middleware
+const allowedOrigins = ["https://front-production-6a0f.up.railway.app"];
+
 app.use(
   cors({
-    origin: "https://front-production-6a0f.up.railway.app", // ✅ Replace '*' with your frontend URL
-    credentials: true, // ✅ Allow credentials (cookies, authorization headers)
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS Not Allowed"));
+      }
+    },
+    credentials: true, // ✅ Required for cookies/auth headers
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
   })
 );
+
 app.options("*", (req, res) => {
   res.sendStatus(200);
 });
